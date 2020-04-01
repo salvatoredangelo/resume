@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-color: rgb(32, 34, 26);
+    --bubble-color: rgba(190, 178, 213, 1);
+    --transparent: rgba(0, 0, 0, 0);
+    --nearly-transparent: rgba(200, 200, 200, 0.5);
+    --top-nav-color: rgba(200, 200, 200, 1);
+    --abyss-color: rgba(10, 10, 10, 1);
+    --abyss-height: 2rem;
+}
+
+/* TEST */
+* {
+    /* border: 1px solid red; */
+}
+
+/* BASE STYLES */
+html {
+    font-family: quicksand, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: var(--font-color);
+    font-size: 20px;
+    line-height: 1.62em;
+
+}
+
+body {
+    overflow-x: hidden;
+    z-index: -1;
+    background-color: black;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0.81rem;
+}
+
+h2 {
+    text-shadow: 1px 1px 2px var(--abyss-color);
+}
+
+hr {
+    margin: 1rem 0 1rem 0;
+    color: var(--bubble-color);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+    margin: auto;
+}
+
+header {
+    position: fixed;
+    background: linear-gradient(var(--abyss-color), var(--transparent));
+    height: var(--abyss-height);
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+footer {
+    position: fixed;
+    height: var(--abyss-height);
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(var(--transparent), var(--abyss-color));
+
+}
+
+section {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+section:nth-child(odd) {
+    background: radial-gradient(farthest-corner at 0 0, var(--top-nav-color), var(--nearly-transparent));
+}
+
+section:nth-child(even) {
+    background: radial-gradient(farthest-corner at 100% 0, var(--top-nav-color), var(--nearly-transparent));
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* PROFILE */
+
+.profile-flex {
+    display: flex;
+    flex-flow: row;
+    align-items: flex-start;
+    margin-top: 0.81rem;
+}
+
+.profile-info {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+#profile-pic {
+    width: 7rem;
+    height: 7rem;
+    border: 0.125rem solid var(--bubble-color);
+    border-radius: 50%;
+    box-shadow: -1px -1px 10px var(--font-color);
+}
+
+.flex-row {
+    display: flex;
+    flex-flow: row;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.grid-ctn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem;
+    padding: 0.25rem;
+}
+
+.grid-cell {
+    padding: 0.25rem;
+    text-align: center;
+    background-color: var(--bubble-color);
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .grid-ctn {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-flex {
+        flex-flow: column;
+    }
+
+    .job-ctn {
+        grid-template-columns: 1fr;
+    }
+    #profile-pic {
+        margin-bottom: 0.81rem;
+    }
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+
+}
+
+/* EXPERIENCE */
+
+.job-ctn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0 1rem;
+    grid-template-areas:
+        "title title"
+        "job job-info"
+        "job-activities job-activities";
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.job-ctn h3 {
+    grid-area: title;
+    margin: 0;
+}
+
+.job {
+    grid-area: job;
+}
+
+.job-info {
+    grid-area: job-info;
+}
+
+.job-activities {
+    grid-area: job-activities;
+}
+
+h3,
+h4 {
+    text-align: start;
+}
+
+.job-ctn h4 {
+    margin-top: 1rem;
+}
+
+.experience li {
+    list-style-type: square;
+    margin-left: 1rem;
+}
+
+
+
+@media (max-width: 600px) {
+    .job-ctn {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "title title"
+            "job job"
+            "job-info job-info"
+            "job-activities job-activities";
+        grid-gap: 0.25rem;
+    }
+
+    .job-ctn * {
+        text-align: center;
+    }
+
+    .job-ctn li {
+        text-align: start;
+    }
+}
+
+/* SKILLS */
+
+.skills div {
+    width: 100%;
+}
+.skills h3 {
+    text-align: center;
+}
+
+/* EDUCATION */
+
+.education div {
+    width: 100%;
+}
+
+.education h3, h4 {
+    margin: 0;
+}
+
+/* BACKGROUND SKETCH */
+
+#sketch {
+    position: fixed;
+    z-index: -100;
+    max-width: 100vw;
+    max-height: 100vh;
+    top: 0;
+}
